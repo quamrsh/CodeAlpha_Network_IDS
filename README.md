@@ -46,10 +46,11 @@ log_suspicious_activity: Function to log and print suspicious activities.
 Detecting Suspicious Packets
 
 def detect_suspicious_packet(packet):
-    if packet.haslayer(IP):
+	if packet.haslayer(IP):
         ip_layer = packet[IP]
         suspicious_ips = ["192.168.1.100", "10.0.0.1"]
-        if ip_layer.src in suspicious_ips or ip_layer.dst in suspicious_ips:
+        
+		if ip_layer.src in suspicious_ips or ip_layer.dst in suspicious_ips:
             log_suspicious_activity(f"Suspicious IP detected: {ip_layer.src} -> {ip_layer.dst}")
 
         if packet.haslayer(TCP):
